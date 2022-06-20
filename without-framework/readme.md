@@ -44,3 +44,47 @@ aws lambda create-function \
 <br>
 
 - Invocar a Lambda
+
+```bash
+aws lambda invoke \
+  --function-name hello-cli \
+  --log-type Tail \
+  logs/lambda-exec.log
+```
+
+<br>
+
+- Atualizar Lambda
+
+```bash
+rm -rf function.zip && zip function.zip index.js
+
+aws lambda update-function-code \
+  --zip-file fileb://function.zip \
+  --function-name hello-cli \
+  --publish \
+  | tee logs/lambda-update.log
+```
+
+<br>
+
+- Invocar a Lambda novamente
+
+```bash
+aws lambda invoke \
+  --function-name hello-cli \
+  --log-type Tail \
+  logs/lambda-updated-exec.log
+```
+
+<br>
+
+- Remover Lambda e role (Para não ficar perdido)
+
+```bash
+aws lambda delete-function \
+  --function-name hello-cli
+
+aws iam delete-role \
+  --role-name lambda-exemplo
+```

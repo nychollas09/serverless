@@ -6,7 +6,7 @@ async function handler(event, context) {
 
   console.log(">>> Evento", JSON.stringify(event, null, 2));
 
-  return { message: "Hello World!" };
+  return { message: "Hello World! 2" };
 }
 
 module.exports = { handler };
