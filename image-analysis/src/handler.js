@@ -1,11 +1,5 @@
 "use strict";
 
-const {
-  promises: { readFile },
-} = require("fs");
-
-const { resolve } = require("path");
-
 const { get } = require("axios");
 
 class Handler {
